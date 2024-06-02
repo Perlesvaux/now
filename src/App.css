@@ -35,8 +35,22 @@
 
 .card {
   padding: 2em;
+
+  max-width: 25em;
+  min-width: 25em;
 }
 
 .read-the-docs {
   color: #888;
+}
+
+.pointer{
+  cursor:pointer;
+}
+
+.coati {
+  max-width: 307px;
+  max-height: 307px;
+  margin: 0 auto;
+  text-align: center;
 }
