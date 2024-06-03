@@ -4,7 +4,7 @@ import { useState } from 'react'
 import './App.css'
 
 function App() {
-  const [state, setState] = useState({url:"", now:"", out:""})
+  const [state, setState] = useState({url:"", now:"", out:"", cb:false})
 
   function userInput(e){
     setState({...state, [e.target.name]:e.target.value})
@@ -24,7 +24,6 @@ function App() {
   }
 
   function setTimeStamp(e){
-    try {
       e.preventDefault()
 
       const sum = seconds()
@@ -32,13 +31,17 @@ function App() {
 
       const result = `https://youtu.be/${url_part[1]}?t=${sum}`
 
-      navigator.clipboard.writeText(result);
+      let output = {...state, out:result}
 
-      setState({...state, out:result})
-      
-    } catch (error) {
-      console.error(error)
-    }
+      try {
+        navigator.clipboard.writeText(result);
+        output = {...output, cb:true}
+        
+      } catch (error) {
+        console.error(error)
+      }
+
+      setState(output)
 
   }
 
@@ -52,7 +55,7 @@ function App() {
 
 
       <div className='card bg-light'>
-          {state.out ?
+          {state.cb ?
           <div className='card-header text-muted'>Copied to clipboard!</div> :
           <div className='card-header text-muted'>Timestamp YT videos from your mobile!</div> }
 
@@ -61,7 +64,7 @@ function App() {
 
             <input type="url" name="url" onChange={userInput} value={state.url} className='form-control text-center' placeholder='URL' required/>
             <input type="text" name="now" onChange={userInput} value={state.now} className='form-control text-center' placeholder='SS | MM:SS | HH:MM:SS' required/>
-            <button type="submit" style={{display:"none"}}> ok </button>
+            <button type="submit" style={{display:"none"}} > ok </button>
 
             <map name="pezote">
               <area onClick={(e)=>{e.target.parentElement.parentElement.requestSubmit()}} shape="rect" coords="138,164,298, 279" alt="Nosy pezote!" className="pointer"/>
@@ -69,6 +72,7 @@ function App() {
 
           </form>
         </div>
+          {console.log(state)}
         
           {state.out && <div className='card-footer text-muted'>{state.out}</div>}
         </div>
