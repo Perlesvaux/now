@@ -48,16 +48,11 @@ function App() {
   
 
   return (
-    <>
-      <div className='card text-center bg-danger'>
-        <img useMap="#pezote" width="307px" height="307px" src="./pezotenow.jpeg" className="coati card-img-bottom text-center" alt="Pezote buddy will help you out!" />
-      </div>
+    <div>
 
 
-      <div className='card bg-light'>
-          {state.cb ?
-          <div className='card-header text-muted'>Copied to clipboard!</div> :
-          <div className='card-header text-muted'>Timestamp YT videos from your mobile!</div> }
+      <div className='card bg-light' style={{borderBottomLeftRadius:"0px", borderBottomRightRadius:"0px"}}  >
+          <div className='card-header text-muted fs-6'>Timestamp YT videos from your mobile!</div> 
 
         <div className='card-body'>
           <form onSubmit={setTimeStamp}>
@@ -71,14 +66,24 @@ function App() {
             </map>
 
           </form>
+
         </div>
-          {console.log(state)}
+
+        { state.out ? <div className='card-body text-muted fs-6'>{state.out}</div> : <div className='text-muted card-body fs-6'>Pezote: "Hey! Check out this icon!"</div> }
+
         
-          {state.out && <div className='card-footer text-muted'>{state.out}</div>}
         </div>
       
+      <div className='card bg-danger' >
+        <img useMap="#pezote" width="307px" height="307px" src="./pezotenow.jpeg" className="coati card-img-bottom text-center" alt="Pezote buddy will help you out!" />
+      </div>
 
-    </>
+
+      <div className='card bg-light' style={{borderTopLeftRadius:"0px", borderTopRightRadius:"0px"}}>
+        { state.cb && <div className='card-body text-muted fs-6'>Copied to clipboard!</div> }
+      </div>
+
+    </div>
   )
 }
 
