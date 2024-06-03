@@ -51,7 +51,7 @@ function App() {
     <div>
 
 
-      <div className='card bg-light' style={{borderBottomLeftRadius:"0px", borderBottomRightRadius:"0px"}}  >
+      <div className='card bg-light' style={{borderRadius:"20px 20px 0px 0px"}}  >
           <div className='card-header text-muted fs-6'>Timestamp YT videos from your mobile!</div> 
 
         <div className='card-body'>
@@ -74,12 +74,12 @@ function App() {
         
         </div>
       
-      <div className='card bg-danger' >
+      <div className='card bg-danger' style={{borderRadius:"0px"}} >
         <img useMap="#pezote" width="307px" height="307px" src="./pezotenow.jpeg" className="coati card-img-bottom text-center" alt="Pezote buddy will help you out!" />
       </div>
 
 
-      <div className='card bg-light' style={{borderTopLeftRadius:"0px", borderTopRightRadius:"0px"}}>
+      <div className='card bg-light' style={{borderRadius:"0px 0px 20px 20px"}}>
         { state.cb && <div className='card-body text-muted fs-6'>Copied to clipboard!</div> }
       </div>
 
